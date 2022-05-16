@@ -1,0 +1,8 @@
+{
+  "type": "module",
+  "dependencies": {
+    "@humanwhocodes/pledge": "^0.4.2",
+    "fs-extra-promise": "^1.0.1",
+    "glob-promise": "^4.2.2"
+  }
+}
