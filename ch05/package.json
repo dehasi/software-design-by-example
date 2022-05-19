@@ -1,0 +1,15 @@
+{
+  "type": "module",
+  "dependencies": {
+    "assert": "^2.0.0",
+    "crypto": "^1.0.1",
+    "fs": "^0.0.1-security",
+    "fs-extra-promise": "^1.0.1",
+    "glob-promise": "^4.2.2",
+    "mocha": "^10.0.0",
+    "mock-fs": "^5.1.2"
+  },
+  "scripts": {
+    "test": "mocha ./test/test-*.js"
+  }
+}
