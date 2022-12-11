@@ -1,0 +1,7 @@
+{
+  "type": "module",
+  "dependencies": {
+    "assert": "^2.0.0",
+    "htmlparser2": "^8.0.1"
+  }
+}
