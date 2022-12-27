@@ -25,7 +25,7 @@ const handle = (result, token, last) => {
     } else if (token.kind === 'GroupStart') {
         result.push(token)
     } else if (token.kind === 'GroupEnd') {
-        result.push(getGroupEnd(result, token))
+        result.push(groupEnd(result, token))
     } else if (token.kind === 'Any') {
         assert(result.length > 0, `No operand for '*' (location ${token.loc})`)
         token.child = result.pop();
