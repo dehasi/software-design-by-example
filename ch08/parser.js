@@ -24,8 +24,7 @@ const handle = (result, token, last) => {
         result.push(token)
     } else if (token.kind === 'GroupStart') {
         result.push(token)
-    }
-    else if (token.kind === 'GroupEnd') {
+    } else if (token.kind === 'GroupEnd') {
         result.push(getGroupEnd(result, token))
     } else if (token.kind === 'Any') {
         assert(result.length > 0, `No operand for '*' (location ${token.loc})`)
@@ -39,6 +38,25 @@ const handle = (result, token, last) => {
     } else {
         assert(false, 'UNIMPLEMENTED')
     }
+}
+
+const groupEnd = (result, token) => {
+    const group = {
+        kind: 'Group',
+        loc: null,
+        end: token.loc,
+        children: []
+    }
+    while (true) {
+        assert(result.length > 0, `Unmatched end parenthesis (location ${token.loc})`)
+        const child = result.pop();
+        if (child.kind === 'GroupEnd') {
+            group.loc = child.loc
+            break
+        }
+        group.children.unshift(child)
+    }
+    return group
 }
 
 const compress = (result) => {
