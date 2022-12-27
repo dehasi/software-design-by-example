@@ -59,8 +59,17 @@ const groupEnd = (result, token) => {
     return group
 }
 
-const compress = (result) => {
-
+const compress = (raw) => {
+    const cooked = []
+    while (raw.length > 0) {
+        const token = raw.pop()
+        if (token.kind === 'Alt') {
+            assert(cooked.length > 0, `No right operand for alt (location ${token.loc})`)
+            token.right = cooked.shift()
+        }
+        cooked.unshift(token)
+    }
+    return cooked
 }
 
 export default parse;
