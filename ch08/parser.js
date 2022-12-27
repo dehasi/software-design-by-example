@@ -50,7 +50,7 @@ const groupEnd = (result, token) => {
     while (true) {
         assert(result.length > 0, `Unmatched end parenthesis (location ${token.loc})`)
         const child = result.pop();
-        if (child.kind === 'GroupEnd') {
+        if (child.kind === 'GroupStart') {
             group.loc = child.loc
             break
         }
